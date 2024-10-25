@@ -1,5 +1,5 @@
 # Setup the project
-cake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 3.30)
 project(DM_detection)
 
 # Find Geant4 package
@@ -17,7 +17,7 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 add_executable(DM_detection DM_detection.cc ${sources} ${headers})
 
 # Link the executable with Geant4 libraries
-target_link_libraries(ScintillatorSim ${Geant4_LIBRARIES})
+target_link_libraries(DM_detection ${Geant4_LIBRARIES})
 
 # Copy any Runtime Scripts to the Build Directory
 set(EXAMPLEB1_SCRIPTS

@@ -8,6 +8,8 @@
 #include "G4PVPlacement.hh"
 #include "G4NistManager.hh"
 
+#include "G4RotationMatrix.hh"
+
 #include "G4SystemOfUnits.hh"
 
 #include "detector.hh"
@@ -25,6 +27,15 @@ public:
 private:
 	G4LogicalVolume *logicDetector;
 	virtual void ConstructSDandField();
+
+	G4int              NbOfLayers;
+	G4int              NbOfColumns;
+	G4double           LayerThickness;          
+	G4double           CalorThickness;
+	G4double		LayerGap;
+	G4double		ColumnGap;
+	G4double           LogWidth;          
+	G4double           LogLength; 
 
 };
 
