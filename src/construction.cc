@@ -18,7 +18,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	MPT_air->AddConstProperty("RINDEX", 1., true);
 	worldMaterial->SetMaterialPropertiesTable(MPT_air);
 
-  	G4Box *solidworld = new G4Box("solidworld", 2*m, 2*m, 2*m);
+  G4Box *solidworld = new G4Box("solidworld", 2*m, 2*m, 2*m);
 	G4LogicalVolume *logicworld = new G4LogicalVolume(solidworld, worldMaterial, "logicWorld");
 	G4VPhysicalVolume *physworld  = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicworld, "physworld", 0, false, 0., true);
 
@@ -88,10 +88,49 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + (i+1)*(LayerThickness+LayerGap);
     physiLog = new G4PVPlacement(rotateMatrix, G4ThreeVector(Xpos, Ypos, Zpos),
     				     logicLog, "Layer", logicworld, false, 100*(i+1)+j);
-	}
-      }      
+		}
+  }      
 
-  	return physworld;
+	// CREATE THE TRACKER
+	G4Material *Si = new G4Material("Silicon", 14., 28.0855*g/mole, 2.33*g/cm3);  // Silicon: z=14, a=28.0855 g/mole, density=2.33 g/cm3
+	G4Material *W = new G4Material("Tungsten", 74., 183.84*g/mole, 19.3*g/cm3);   // Tungsten: z=74, a=183.84 g/mole, density=19.3 g/cm3
+	G4Material* Vacuum = new G4Material("Galactic", 1., 1.008*g/mole, CLHEP::universe_mean_density,
+                                    kStateGas, 2.73*kelvin, 3.e-18*pascal);
+
+	// Silicon Tracker Configuration
+	G4double trackerThickness = 0.3*mm;     // Thickness of silicon layer
+	G4double tungstenThickness = 0.5*mm;    // Thickness of tungsten layer
+	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
+	G4double trackerLength = 10*cm;
+
+	G4int numTrackerLayers = 16;            // Number of silicon layers
+	G4double layerSpacing = 0.5*mm;           // Spacing between layers
+
+	G4double trackerZPosition = -15*cm; 
+
+	// Define the solid shapes for silicon and tungsten layers
+	G4Box* solidTrackerLayer = new G4Box("solidTrackerLayer", trackerWidth/2, trackerLength/2, trackerThickness/2);
+	G4Box* solidTungstenLayer = new G4Box("solidTungstenLayer", trackerWidth/2, trackerLength/2, tungstenThickness/2);
+
+	// Define logical volumes for silicon and tungsten layers
+	G4LogicalVolume* logicTrackerLayer = new G4LogicalVolume(solidTrackerLayer, Si, "logicTrackerLayer");
+	G4LogicalVolume* logicTungstenLayer = new G4LogicalVolume(solidTungstenLayer, W, "logicTungstenLayer");
+
+	// Place each tracker and tungsten layer along the Z-axis
+	for (G4int i = 0; i < numTrackerLayers; ++i) {
+		G4double zPos = -((numTrackerLayers - 1) * layerSpacing) / 2 + i * layerSpacing + trackerZPosition;
+
+		// Place the silicon layer
+		new G4PVPlacement(0, G4ThreeVector(0, 0, zPos), logicTrackerLayer, "physTrackerLayer", logicworld, false, i, true);
+
+		// Place the tungsten layer (between silicon layers)
+		if (i < numTrackerLayers - 1) { // Ensure tungsten layers are one less than silicon layers
+			G4double tungstenZPos = zPos + trackerThickness / 2 + tungstenThickness / 2;
+			new G4PVPlacement(0, G4ThreeVector(0, 0, tungstenZPos), logicTungstenLayer, "physTungstenLayer", logicworld, false, i, true);
+		}
+	}
+
+  return physworld;
 }
 
 void MyDetectorConstruction::ConstructSDandField()

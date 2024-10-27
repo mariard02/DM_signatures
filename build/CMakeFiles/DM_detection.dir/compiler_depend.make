@@ -1204,7 +1204,6 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4Profiler.icc \
   /usr/local/include/Geant4/G4PseudoScene.hh \
   /usr/local/include/Geant4/G4Qt3D.hh \
-  /usr/local/include/Geant4/G4RadioactiveDecayPhysics.hh \
   /usr/local/include/Geant4/G4RayTracer.hh \
   /usr/local/include/Geant4/G4ReferenceCountedHandle.hh \
   /usr/local/include/Geant4/G4Region.hh \
@@ -8497,7 +8496,6 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
   /usr/local/include/Geant4/G4GPILSelection.hh \
   /usr/local/include/Geant4/G4GeomSplitter.hh \
   /usr/local/include/Geant4/G4GlobalConfig.hh \
-  /usr/local/include/Geant4/G4HadronPhysicsFTFP_BERT.hh \
   /usr/local/include/Geant4/G4IonisParamElm.hh \
   /usr/local/include/Geant4/G4IonisParamMat.hh \
   /usr/local/include/Geant4/G4Isotope.hh \
@@ -8547,7 +8545,6 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
   /usr/local/include/Geant4/G4ProductionCutsTable.hh \
   /usr/local/include/Geant4/G4Profiler.hh \
   /usr/local/include/Geant4/G4Profiler.icc \
-  /usr/local/include/Geant4/G4RadioactiveDecayPhysics.hh \
   /usr/local/include/Geant4/G4ReferenceCountedHandle.hh \
   /usr/local/include/Geant4/G4Region.hh \
   /usr/local/include/Geant4/G4Region.icc \
@@ -8686,6 +8683,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 
 /usr/local/include/Geant4/G4VFilter.hh:
 
+/usr/local/include/Geant4/G4VFacet.hh:
+
 /usr/local/include/Geant4/G4VCSGfaceted.hh:
 
 /usr/local/include/Geant4/G4VCSGface.hh:
@@ -8767,10 +8766,6 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /usr/local/include/Geant4/G4Region.hh:
 
 /usr/local/include/Geant4/G4RayTracer.hh:
-
-/usr/local/include/Geant4/G4VFacet.hh:
-
-/usr/local/include/Geant4/G4RadioactiveDecayPhysics.hh:
 
 /usr/local/include/Geant4/G4PseudoScene.hh:
 

@@ -1371,7 +1371,6 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: \
   /usr/local/include/Geant4/G4VRestDiscreteProcess.hh \
   /usr/local/include/Geant4/G4ParticleChangeForDecay.hh \
   /usr/local/include/Geant4/G4DecayProcessType.hh \
-  /usr/local/include/Geant4/G4RadioactiveDecayPhysics.hh \
   /Users/maria/Desktop/Máster/M1/S1/Astroparticle\ space\ misions/DM_signatures/include/action.hh \
   /usr/local/include/Geant4/G4VUserActionInitialization.hh \
   /Users/maria/Desktop/Máster/M1/S1/Astroparticle\ space\ misions/DM_signatures/include/generator.hh \

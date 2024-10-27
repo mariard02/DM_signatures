@@ -1141,6 +1141,4 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: \
   /usr/local/include/Geant4/G4ParticleChange.icc \
   /usr/local/include/Geant4/G4ProcessType.hh \
   /usr/local/include/Geant4/G4ParticleChangeForDecay.hh \
-  /usr/local/include/Geant4/G4DecayProcessType.hh \
-  /usr/local/include/Geant4/G4RadioactiveDecayPhysics.hh \
-  /usr/local/include/Geant4/G4HadronPhysicsFTFP_BERT.hh
+  /usr/local/include/Geant4/G4DecayProcessType.hh
