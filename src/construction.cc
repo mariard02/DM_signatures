@@ -15,8 +15,10 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	G4Material* worldMaterial = nist->FindOrBuildMaterial("G4_AIR");
 
 	G4MaterialPropertiesTable* MPT_air = new G4MaterialPropertiesTable();
-	MPT_air->AddConstProperty("RINDEX", 1., true);
-	worldMaterial->SetMaterialPropertiesTable(MPT_air);
+	std::vector<G4double> energyAir     = {2.034*eV, 3.*eV, 4.136*eV};
+	std::vector<G4double> rindexAir     = {1., 1., 1.};
+	MPT_air ->AddProperty("RINDEX", energyAir, rindexAir);
+	//worldMaterial->SetMaterialPropertiesTable(MPT_air);
 
   G4Box *solidworld = new G4Box("solidworld", 2*m, 2*m, 2*m);
 	G4LogicalVolume *logicworld = new G4LogicalVolume(solidworld, worldMaterial, "logicWorld");
@@ -99,12 +101,12 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// Silicon Tracker Configuration
 	G4double trackerThickness = 0.3*mm;     // Thickness of silicon layer
-	G4double tungstenThickness = 0.5*mm;    // Thickness of tungsten layer
+	G4double tungstenThickness = 0.6*mm;    // Thickness of tungsten layer
 	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
 	G4double trackerLength = 10*cm;
 
 	G4int numTrackerLayers = 16;            // Number of silicon layers
-	G4double layerSpacing = 0.5*mm;           // Spacing between layers
+	G4double layerSpacing = 0.9*mm;           // Spacing between layers
 
 	G4double trackerZPosition = -15*cm; 
 
