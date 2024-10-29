@@ -1113,4 +1113,6 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: \
   /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
   /usr/local/include/Geant4/G4LogicalSurface.hh \
   /usr/local/include/Geant4/G4LogicalSurface.icc \
-  /usr/local/include/Geant4/G4LogicalBorderSurface.icc
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.icc

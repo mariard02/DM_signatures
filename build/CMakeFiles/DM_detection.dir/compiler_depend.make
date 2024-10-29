@@ -1116,6 +1116,8 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4Log.hh \
   /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
   /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.icc \
   /usr/local/include/Geant4/G4LogicalSurface.hh \
   /usr/local/include/Geant4/G4LogicalSurface.icc \
   /usr/local/include/Geant4/G4LogicalVolume.hh \
@@ -5373,6 +5375,8 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: /Users/maria/Desktop/Máster
   /usr/local/include/Geant4/G4Log.hh \
   /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
   /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.icc \
   /usr/local/include/Geant4/G4LogicalSurface.hh \
   /usr/local/include/Geant4/G4LogicalSurface.icc \
   /usr/local/include/Geant4/G4LogicalVolume.hh \
@@ -8898,6 +8902,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 
 /usr/local/include/Geant4/G4LogicalSurface.hh:
 
+/usr/local/include/Geant4/G4LogicalSkinSurface.icc:
+
 /usr/local/include/Geant4/G4LogicalBorderSurface.icc:
 
 /usr/local/include/Geant4/G4Step.icc:
@@ -10077,6 +10083,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/__wctype.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__fwd/streambuf.h:
+
+/usr/local/include/Geant4/G4LogicalSkinSurface.hh:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__fwd/sstream.h:
 

@@ -1364,6 +1364,8 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: \
   /usr/local/include/Geant4/G4LogicalSurface.hh \
   /usr/local/include/Geant4/G4LogicalSurface.icc \
   /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSkinSurface.icc \
   /Users/maria/Desktop/Máster/M1/S1/Astroparticle\ space\ misions/DM_signatures/include/physics.hh \
   /usr/local/include/Geant4/G4VModularPhysicsList.hh \
   /usr/local/include/Geant4/G4VUserPhysicsList.hh \

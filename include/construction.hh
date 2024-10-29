@@ -18,6 +18,8 @@
 #include "G4OpticalSurface.hh"
 #include "G4LogicalBorderSurface.hh"
 
+#include "G4LogicalSkinSurface.hh"
+
 class MyDetectorConstruction : public G4VUserDetectorConstruction
 {
 public:

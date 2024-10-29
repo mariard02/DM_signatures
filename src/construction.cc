@@ -20,7 +20,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	MPT_air ->AddProperty("RINDEX", energyAir, rindexAir);
 	worldMaterial->SetMaterialPropertiesTable(MPT_air);
 
-  G4Box *solidworld = new G4Box("solidworld", 2*m, 2*m, 2*m);
+  G4Box *solidworld = new G4Box("solidworld", 2.*m, 2.*m, 2.*m);
 	G4LogicalVolume *logicworld = new G4LogicalVolume(solidworld, worldMaterial, "logicWorld");
 	G4VPhysicalVolume *physworld  = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicworld, "physworld", 0, false, 0., true);
 
@@ -94,13 +94,13 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
   	G4OpticalSurface* opAirScintillator = new G4OpticalSurface("AirScintillator");
 		opAirScintillator -> SetType(dielectric_metal);
-		opAirScintillator -> SetFinish(ground);
-		opAirScintillator -> SetModel(unified);
-		opAirScintillator -> SetPolish(0.8);
+		opAirScintillator -> SetFinish(polished);
+		opAirScintillator -> SetModel(glisur);
+		opAirScintillator -> SetPolish(1.);
 
 		G4MaterialPropertiesTable* OpSurfaceProperty = new G4MaterialPropertiesTable();
 
-		std::vector<G4double> pp = {2.038*eV, 4.144*eV};
+		std::vector<G4double> pp = {2.038*eV, 8.*MeV};
 		std::vector<G4double> reflectivity = {1., 1.};
 		std::vector<G4double> transmittance = {0., 0.};
 		//std::vector<G4double> efficiency = {0.1, 0.1};
@@ -111,10 +111,10 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 		opAirScintillator -> SetMaterialPropertiesTable(OpSurfaceProperty);
 
-		//G4LogicalSkinSurface* airScintillator =
-			//new G4LogicalSkinSurface("AirScintillator", logicLog, opAirScintillator);
+		G4LogicalSkinSurface* airScintillator =
+			new G4LogicalSkinSurface("AirScintillator", logicLog, opAirScintillator);
 
-		G4LogicalBorderSurface* AirScintillator = new G4LogicalBorderSurface("AirScintillator", physiLog, physworld, opAirScintillator);
+		//G4LogicalBorderSurface* AirScintillator = new G4LogicalBorderSurface("AirScintillator", physiLog, physworld, opAirScintillator);
 
 		}
   }      
