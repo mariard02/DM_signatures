@@ -15,6 +15,8 @@
 #include "detector.hh"
 
 #include "G4HadronPhysicsFTFP_BERT.hh"
+#include "G4OpticalSurface.hh"
+#include "G4LogicalBorderSurface.hh"
 
 class MyDetectorConstruction : public G4VUserDetectorConstruction
 {

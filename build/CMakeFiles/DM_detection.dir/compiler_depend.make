@@ -1114,6 +1114,10 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4Isotope.hh \
   /usr/local/include/Geant4/G4IsotopeVector.hh \
   /usr/local/include/Geant4/G4Log.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.icc \
   /usr/local/include/Geant4/G4LogicalVolume.hh \
   /usr/local/include/Geant4/G4LogicalVolume.icc \
   /usr/local/include/Geant4/G4LorentzVector.hh \
@@ -1149,6 +1153,7 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4OpenGLStoredQt.hh \
   /usr/local/include/Geant4/G4OpticalParameters.hh \
   /usr/local/include/Geant4/G4OpticalPhysics.hh \
+  /usr/local/include/Geant4/G4OpticalSurface.hh \
   /usr/local/include/Geant4/G4Orb.hh \
   /usr/local/include/Geant4/G4Orb.icc \
   /usr/local/include/Geant4/G4OrderedTable.hh \
@@ -1169,6 +1174,8 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4ParticleTable.icc \
   /usr/local/include/Geant4/G4ParticleTableIterator.hh \
   /usr/local/include/Geant4/G4PhysicalVolumeModel.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.icc \
   /usr/local/include/Geant4/G4PhysicsFreeVector.hh \
   /usr/local/include/Geant4/G4PhysicsListHelper.hh \
   /usr/local/include/Geant4/G4PhysicsListOrderingParameter.hh \
@@ -1244,6 +1251,7 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: /Users/maria/Desktop/Máster/M1/
   /usr/local/include/Geant4/G4SubEvent.hh \
   /usr/local/include/Geant4/G4SubEventTrackStack.hh \
   /usr/local/include/Geant4/G4SurfBits.hh \
+  /usr/local/include/Geant4/G4SurfaceProperty.hh \
   /usr/local/include/Geant4/G4SystemOfUnits.hh \
   /usr/local/include/Geant4/G4THitsCollection.hh \
   /usr/local/include/Geant4/G4THitsMap.hh \
@@ -5363,6 +5371,10 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: /Users/maria/Desktop/Máster
   /usr/local/include/Geant4/G4Isotope.hh \
   /usr/local/include/Geant4/G4IsotopeVector.hh \
   /usr/local/include/Geant4/G4Log.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
+  /usr/local/include/Geant4/G4LogicalSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.icc \
   /usr/local/include/Geant4/G4LogicalVolume.hh \
   /usr/local/include/Geant4/G4LogicalVolume.icc \
   /usr/local/include/Geant4/G4LorentzVector.hh \
@@ -5382,6 +5394,7 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: /Users/maria/Desktop/Máster
   /usr/local/include/Geant4/G4NistManager.hh \
   /usr/local/include/Geant4/G4NistMaterialBuilder.hh \
   /usr/local/include/Geant4/G4Normal3D.hh \
+  /usr/local/include/Geant4/G4OpticalSurface.hh \
   /usr/local/include/Geant4/G4OrderedTable.hh \
   /usr/local/include/Geant4/G4PDefManager.hh \
   /usr/local/include/Geant4/G4PVPlacement.hh \
@@ -5391,6 +5404,8 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: /Users/maria/Desktop/Máster
   /usr/local/include/Geant4/G4ParticleTable.hh \
   /usr/local/include/Geant4/G4ParticleTable.icc \
   /usr/local/include/Geant4/G4ParticleTableIterator.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.icc \
   /usr/local/include/Geant4/G4PhysicsFreeVector.hh \
   /usr/local/include/Geant4/G4PhysicsListHelper.hh \
   /usr/local/include/Geant4/G4PhysicsListOrderingParameter.hh \
@@ -5417,6 +5432,7 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: /Users/maria/Desktop/Máster
   /usr/local/include/Geant4/G4SteppingControl.hh \
   /usr/local/include/Geant4/G4String.hh \
   /usr/local/include/Geant4/G4String.icc \
+  /usr/local/include/Geant4/G4SurfaceProperty.hh \
   /usr/local/include/Geant4/G4SystemOfUnits.hh \
   /usr/local/include/Geant4/G4ThreadLocalSingleton.hh \
   /usr/local/include/Geant4/G4Threading.hh \
@@ -8496,6 +8512,7 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
   /usr/local/include/Geant4/G4GPILSelection.hh \
   /usr/local/include/Geant4/G4GeomSplitter.hh \
   /usr/local/include/Geant4/G4GlobalConfig.hh \
+  /usr/local/include/Geant4/G4HadronPhysicsFTFP_BERT.hh \
   /usr/local/include/Geant4/G4IonisParamElm.hh \
   /usr/local/include/Geant4/G4IonisParamMat.hh \
   /usr/local/include/Geant4/G4Isotope.hh \
@@ -8616,8 +8633,6 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /usr/local/include/Geant4/G4coutDestination.hh:
 
 /usr/local/include/Geant4/G4VoxelNavigation.icc:
-
-/usr/local/include/Geant4/G4VoxelNavigation.hh:
 
 /usr/local/include/Geant4/G4Visible.hh:
 
@@ -8809,6 +8824,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 
 /usr/local/include/Geant4/G4PhysicsListHelper.hh:
 
+/usr/local/include/Geant4/G4Physics2DVector.hh:
+
 /usr/local/include/Geant4/G4ParticleMomentum.hh:
 
 /usr/local/include/Geant4/geomwdefs.hh:
@@ -8876,6 +8893,12 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /usr/local/include/Geant4/G4MCCIndexConversionTable.hh:
 
 /usr/local/include/Geant4/G4LorentzVector.hh:
+
+/usr/local/include/Geant4/G4VoxelNavigation.hh:
+
+/usr/local/include/Geant4/G4LogicalSurface.hh:
+
+/usr/local/include/Geant4/G4LogicalBorderSurface.icc:
 
 /usr/local/include/Geant4/G4Step.icc:
 
@@ -9452,6 +9475,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__type_traits/remove_const_ref.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__utility/forward.h:
+
+/usr/local/include/Geant4/G4SurfaceProperty.hh:
 
 /usr/local/include/Geant4/G4LogicalVolume.hh:
 
@@ -10829,6 +10854,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 
 /usr/local/include/Geant4/G4Tubs.hh:
 
+/usr/local/include/Geant4/G4OpticalSurface.hh:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/_locale.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/in_found_result.h:
@@ -10956,6 +10983,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/ranges_count.h:
 
 /usr/local/include/Geant4/G4PhysicsModelCatalog.hh:
+
+/usr/local/include/Geant4/G4LogicalBorderSurface.hh:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/ranges_any_of.h:
 
@@ -11107,6 +11136,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/find_end.h:
 
+/usr/local/include/Geant4/G4LogicalSurface.icc:
+
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/minmax.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__chrono/hh_mm_ss.h:
@@ -11244,6 +11275,8 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o: /Users/maria/Desktop/Máster/M1/S
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/equal_range.h:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/arm/arch.h:
+
+/usr/local/include/Geant4/G4Physics2DVector.icc:
 
 /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__algorithm/uniform_random_bit_generator_adaptor.h:
 

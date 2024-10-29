@@ -18,7 +18,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	std::vector<G4double> energyAir     = {2.034*eV, 3.*eV, 4.136*eV};
 	std::vector<G4double> rindexAir     = {1., 1., 1.};
 	MPT_air ->AddProperty("RINDEX", energyAir, rindexAir);
-	//worldMaterial->SetMaterialPropertiesTable(MPT_air);
+	worldMaterial->SetMaterialPropertiesTable(MPT_air);
 
   G4Box *solidworld = new G4Box("solidworld", 2*m, 2*m, 2*m);
 	G4LogicalVolume *logicworld = new G4LogicalVolume(solidworld, worldMaterial, "logicWorld");
@@ -88,8 +88,34 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	Xpos = 0.;
 	Ypos = -((NbOfColumns-1)/2)*(LogWidth+ColumnGap) + j*(LogWidth+ColumnGap);
 	Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + (i+1)*(LayerThickness+LayerGap);
+
     physiLog = new G4PVPlacement(rotateMatrix, G4ThreeVector(Xpos, Ypos, Zpos),
     				     logicLog, "Layer", logicworld, false, 100*(i+1)+j);
+
+  	G4OpticalSurface* opAirScintillator = new G4OpticalSurface("AirScintillator");
+		opAirScintillator -> SetType(dielectric_metal);
+		opAirScintillator -> SetFinish(ground);
+		opAirScintillator -> SetModel(unified);
+		opAirScintillator -> SetPolish(0.8);
+
+		G4MaterialPropertiesTable* OpSurfaceProperty = new G4MaterialPropertiesTable();
+
+		std::vector<G4double> pp = {2.038*eV, 4.144*eV};
+		std::vector<G4double> reflectivity = {1., 1.};
+		std::vector<G4double> transmittance = {0., 0.};
+		//std::vector<G4double> efficiency = {0.1, 0.1};
+
+		OpSurfaceProperty -> AddProperty("REFLECTIVITY", pp, reflectivity);
+		OpSurfaceProperty->AddProperty("TRANSMITTANCE", pp, transmittance);
+		//OpSurfaceProperty -> AddProperty("EFFICIENCY", pp, efficiency);
+
+		opAirScintillator -> SetMaterialPropertiesTable(OpSurfaceProperty);
+
+		//G4LogicalSkinSurface* airScintillator =
+			//new G4LogicalSkinSurface("AirScintillator", logicLog, opAirScintillator);
+
+		G4LogicalBorderSurface* AirScintillator = new G4LogicalBorderSurface("AirScintillator", physiLog, physworld, opAirScintillator);
+
 		}
   }      
 
@@ -100,13 +126,14 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
                                     kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
 	// Silicon Tracker Configuration
-	G4double trackerThickness = 0.3*mm;     // Thickness of silicon layer
-	G4double tungstenThickness = 0.6*mm;    // Thickness of tungsten layer
+	G4double trackerThickness = 0.1 * mm; ;     // Thickness of silicon layer
+	G4double tungstenThickness = 0.133 * mm;
+	G4double tungstenThicknessThick = 2 * 0.684 * mm;    // Thickness of tungsten layer
 	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
 	G4double trackerLength = 10*cm;
 
-	G4int numTrackerLayers = 16;            // Number of silicon layers
-	G4double layerSpacing = 0.9*mm;           // Spacing between layers
+	G4int numTrackerLayers = 12;            // Number of silicon layers
+	G4double layerSpacing = 1.0 * mm;          // Spacing between layers
 
 	G4double trackerZPosition = -15*cm; 
 
@@ -131,6 +158,12 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 			new G4PVPlacement(0, G4ThreeVector(0, 0, tungstenZPos), logicTungstenLayer, "physTungstenLayer", logicworld, false, i, true);
 		}
 	}
+
+	G4Box* solidTungstenLayerThick = new G4Box("solidTungstenLayerThick", trackerWidth/2, trackerLength/2, tungstenThicknessThick/2);
+	G4LogicalVolume* logicTungstenLayerThick = new G4LogicalVolume(solidTungstenLayerThick, W, "logicTungstenLayerThick");
+
+	G4double zPosThick = -((numTrackerLayers - 1) * layerSpacing) / 2 + numTrackerLayers * layerSpacing + trackerZPosition;
+	new G4PVPlacement(0, G4ThreeVector(0, 0, zPosThick), logicTungstenLayerThick, "physTungstenLayerThick", logicworld, false, 0, true);
 
   return physworld;
 }

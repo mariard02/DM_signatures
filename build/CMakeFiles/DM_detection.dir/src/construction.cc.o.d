@@ -1105,4 +1105,12 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/deque \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/list \
   /usr/local/include/Geant4/G4VUPLSplitter.hh \
-  /usr/local/include/Geant4/rundefs.hh
+  /usr/local/include/Geant4/rundefs.hh \
+  /usr/local/include/Geant4/G4OpticalSurface.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.icc \
+  /usr/local/include/Geant4/G4SurfaceProperty.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.icc \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc

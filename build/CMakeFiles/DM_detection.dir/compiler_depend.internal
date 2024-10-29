@@ -1115,6 +1115,10 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o
  /usr/local/include/Geant4/G4Isotope.hh
  /usr/local/include/Geant4/G4IsotopeVector.hh
  /usr/local/include/Geant4/G4Log.hh
+ /usr/local/include/Geant4/G4LogicalBorderSurface.hh
+ /usr/local/include/Geant4/G4LogicalBorderSurface.icc
+ /usr/local/include/Geant4/G4LogicalSurface.hh
+ /usr/local/include/Geant4/G4LogicalSurface.icc
  /usr/local/include/Geant4/G4LogicalVolume.hh
  /usr/local/include/Geant4/G4LogicalVolume.icc
  /usr/local/include/Geant4/G4LorentzVector.hh
@@ -1150,6 +1154,7 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o
  /usr/local/include/Geant4/G4OpenGLStoredQt.hh
  /usr/local/include/Geant4/G4OpticalParameters.hh
  /usr/local/include/Geant4/G4OpticalPhysics.hh
+ /usr/local/include/Geant4/G4OpticalSurface.hh
  /usr/local/include/Geant4/G4Orb.hh
  /usr/local/include/Geant4/G4Orb.icc
  /usr/local/include/Geant4/G4OrderedTable.hh
@@ -1170,6 +1175,8 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o
  /usr/local/include/Geant4/G4ParticleTable.icc
  /usr/local/include/Geant4/G4ParticleTableIterator.hh
  /usr/local/include/Geant4/G4PhysicalVolumeModel.hh
+ /usr/local/include/Geant4/G4Physics2DVector.hh
+ /usr/local/include/Geant4/G4Physics2DVector.icc
  /usr/local/include/Geant4/G4PhysicsFreeVector.hh
  /usr/local/include/Geant4/G4PhysicsListHelper.hh
  /usr/local/include/Geant4/G4PhysicsListOrderingParameter.hh
@@ -1245,6 +1252,7 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o
  /usr/local/include/Geant4/G4SubEvent.hh
  /usr/local/include/Geant4/G4SubEventTrackStack.hh
  /usr/local/include/Geant4/G4SurfBits.hh
+ /usr/local/include/Geant4/G4SurfaceProperty.hh
  /usr/local/include/Geant4/G4SystemOfUnits.hh
  /usr/local/include/Geant4/G4THitsCollection.hh
  /usr/local/include/Geant4/G4THitsMap.hh
@@ -5368,6 +5376,10 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o
  /usr/local/include/Geant4/G4Isotope.hh
  /usr/local/include/Geant4/G4IsotopeVector.hh
  /usr/local/include/Geant4/G4Log.hh
+ /usr/local/include/Geant4/G4LogicalBorderSurface.hh
+ /usr/local/include/Geant4/G4LogicalBorderSurface.icc
+ /usr/local/include/Geant4/G4LogicalSurface.hh
+ /usr/local/include/Geant4/G4LogicalSurface.icc
  /usr/local/include/Geant4/G4LogicalVolume.hh
  /usr/local/include/Geant4/G4LogicalVolume.icc
  /usr/local/include/Geant4/G4LorentzVector.hh
@@ -5387,6 +5399,7 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o
  /usr/local/include/Geant4/G4NistManager.hh
  /usr/local/include/Geant4/G4NistMaterialBuilder.hh
  /usr/local/include/Geant4/G4Normal3D.hh
+ /usr/local/include/Geant4/G4OpticalSurface.hh
  /usr/local/include/Geant4/G4OrderedTable.hh
  /usr/local/include/Geant4/G4PDefManager.hh
  /usr/local/include/Geant4/G4PVPlacement.hh
@@ -5396,6 +5409,8 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o
  /usr/local/include/Geant4/G4ParticleTable.hh
  /usr/local/include/Geant4/G4ParticleTable.icc
  /usr/local/include/Geant4/G4ParticleTableIterator.hh
+ /usr/local/include/Geant4/G4Physics2DVector.hh
+ /usr/local/include/Geant4/G4Physics2DVector.icc
  /usr/local/include/Geant4/G4PhysicsFreeVector.hh
  /usr/local/include/Geant4/G4PhysicsListHelper.hh
  /usr/local/include/Geant4/G4PhysicsListOrderingParameter.hh
@@ -5422,6 +5437,7 @@ CMakeFiles/DM_detection.dir/src/construction.cc.o
  /usr/local/include/Geant4/G4SteppingControl.hh
  /usr/local/include/Geant4/G4String.hh
  /usr/local/include/Geant4/G4String.icc
+ /usr/local/include/Geant4/G4SurfaceProperty.hh
  /usr/local/include/Geant4/G4SystemOfUnits.hh
  /usr/local/include/Geant4/G4ThreadLocalSingleton.hh
  /usr/local/include/Geant4/G4Threading.hh
@@ -8504,6 +8520,7 @@ CMakeFiles/DM_detection.dir/src/physics.cc.o
  /usr/local/include/Geant4/G4GPILSelection.hh
  /usr/local/include/Geant4/G4GeomSplitter.hh
  /usr/local/include/Geant4/G4GlobalConfig.hh
+ /usr/local/include/Geant4/G4HadronPhysicsFTFP_BERT.hh
  /usr/local/include/Geant4/G4IonisParamElm.hh
  /usr/local/include/Geant4/G4IonisParamMat.hh
  /usr/local/include/Geant4/G4Isotope.hh

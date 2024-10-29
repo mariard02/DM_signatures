@@ -1356,6 +1356,14 @@ CMakeFiles/DM_detection.dir/DM_detection.cc.o: \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/regex \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/deque \
   /usr/local/include/Geant4/G4VUPLSplitter.hh \
+  /usr/local/include/Geant4/G4OpticalSurface.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.hh \
+  /usr/local/include/Geant4/G4Physics2DVector.icc \
+  /usr/local/include/Geant4/G4SurfaceProperty.hh \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.hh \
+  /usr/local/include/Geant4/G4LogicalSurface.icc \
+  /usr/local/include/Geant4/G4LogicalBorderSurface.icc \
   /Users/maria/Desktop/Máster/M1/S1/Astroparticle\ space\ misions/DM_signatures/include/physics.hh \
   /usr/local/include/Geant4/G4VModularPhysicsList.hh \
   /usr/local/include/Geant4/G4VUserPhysicsList.hh \
