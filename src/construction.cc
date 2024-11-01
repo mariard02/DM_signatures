@@ -43,26 +43,40 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	CsIMaterial->AddElement(elCs,.5);
 
 	// Add the physical propierties of the scintillating material
-	std::vector<G4double> energy     = {2.034*eV, 3.*eV, 4.136*eV};
-	std::vector<G4double> rindex     = {1.58, 1.58, 1.58};
-	std::vector<G4double> absorption = {400.*cm, 400.*cm, 400.0*cm};
+	//std::vector<G4double> energy     = {2.034*eV, 3.*eV, 4.136*eV};
+	//std::vector<G4double> rindex     = {1.78, 1.78, 1.78};
+	//std::vector<G4double> absorption = {100.*cm, 100.*cm, 100.0*cm};
 	
-	G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
+	//G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
 	
 	// property independent of energy
-	MPT->AddConstProperty("SCINTILLATIONYIELD", 9200./MeV);
+	//MPT->AddConstProperty("SCINTILLATIONYIELD", 20000./MeV);
 	
 	// properties that depend on energy
+	//MPT->AddProperty("RINDEX", energy, rindex);
+	//MPT->AddProperty("ABSLENGTH", energy, absorption);
+	
+	
+	//const G4int NUMENTRIES = 13;
+	//G4double Scnt_PP[NUMENTRIES] = { 2.39*eV, 2.43*eV, 2.48*eV, 2.53*eV, 2.58*eV, 2.64*eV, 2.70*eV, 2.76*eV, 2.82*eV, 2.89*eV, 2.95*eV, 3.03*eV, 3.10*eV};
+	//G4double Scnt_FAST[NUMENTRIES] = {0.02, 0.05, 0.10, 0.20, 0.35, 0.50, 0.65, 0.85, 1.00, 0.85, 0.65, 0.35, 0.10};
+	//MPT->AddProperty("SCINTILLATIONCOMPONENT1", Scnt_PP, Scnt_FAST, NUMENTRIES); // We only consider the fast component
+	//MPT->AddConstProperty("RESOLUTIONSCALE", 2.0);
+	//MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 3.3*ns); 
+
+	std::vector<G4double> energy = {2.034*eV, 2.25*eV, 3.*eV, 4.136*eV}; 
+	std::vector<G4double> rindex = {1.78, 1.78, 1.78, 1.78};
+	std::vector<G4double> absorption = {100.*cm, 100.*cm, 100.*cm, 100.*cm};
+	std::vector<G4double> Scnt_FAST = {0.1, 1.0, 0.1, 0.0};
+
+	G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
+	MPT->AddConstProperty("SCINTILLATIONYIELD", 54000./MeV); // Rendimiento de CsI(Tl)
 	MPT->AddProperty("RINDEX", energy, rindex);
 	MPT->AddProperty("ABSLENGTH", energy, absorption);
-	
-	
-	const G4int NUMENTRIES = 13;
-	G4double Scnt_PP[NUMENTRIES] = { 2.39*eV, 2.43*eV, 2.48*eV, 2.53*eV, 2.58*eV, 2.64*eV, 2.70*eV, 2.76*eV, 2.82*eV, 2.89*eV, 2.95*eV, 3.03*eV, 3.10*eV};
-	G4double Scnt_FAST[NUMENTRIES] = {0.02, 0.05, 0.10, 0.20, 0.35, 0.50, 0.65, 0.85, 1.00, 0.85, 0.65, 0.35, 0.10};
-	MPT->AddProperty("SCINTILLATIONCOMPONENT1", Scnt_PP, Scnt_FAST, NUMENTRIES); // We only consider the fast component
-	MPT->AddConstProperty("RESOLUTIONSCALE", 2.0);
-	MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 3.3*ns); 
+	MPT->AddProperty("SCINTILLATIONCOMPONENT1", energy, Scnt_FAST);
+	MPT->AddConstProperty("RESOLUTIONSCALE", 1.5);
+	MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 1000.*ns); // Decaimiento de CsI(Tl)
+
 	CsIMaterial->SetMaterialPropertiesTable(MPT);
 
 	// Define the solid and logical volume
@@ -126,7 +140,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
                                     kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
 	// Silicon Tracker Configuration
-	G4double trackerThickness = 0.1 * mm; ;     // Thickness of silicon layer
+	G4double trackerThickness = 0.3 * mm; ;     // Thickness of silicon layer
 	G4double tungstenThickness = 0.133 * mm;
 	G4double tungstenThicknessThick = 2 * 0.684 * mm;    // Thickness of tungsten layer
 	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
