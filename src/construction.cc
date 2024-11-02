@@ -70,7 +70,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	std::vector<G4double> Scnt_FAST = {0.1, 1.0, 0.1, 0.0};
 
 	G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
-	MPT->AddConstProperty("SCINTILLATIONYIELD", 54000./MeV); // Rendimiento de CsI(Tl)
+	MPT->AddConstProperty("SCINTILLATIONYIELD", 1./MeV); // Rendimiento de CsI(Tl)
 	MPT->AddProperty("RINDEX", energy, rindex);
 	MPT->AddProperty("ABSLENGTH", energy, absorption);
 	MPT->AddProperty("SCINTILLATIONCOMPONENT1", energy, Scnt_FAST);
@@ -184,5 +184,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 void MyDetectorConstruction::ConstructSDandField()
 {
+	MySensitiveDetector *sensDet = new MySensitiveDetector("SensitiveDetector");
 
+	//logicLog->SetSensitiveDetector(sensDet);
 }

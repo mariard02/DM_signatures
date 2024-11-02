@@ -7,6 +7,7 @@
 #include "G4Box.hh"
 #include "G4PVPlacement.hh"
 #include "G4NistManager.hh"
+#include "G4VSensitiveDetector.hh"
 
 #include "G4RotationMatrix.hh"
 
@@ -28,9 +29,12 @@ public:
 
 	virtual G4VPhysicalVolume *Construct();
 
-private:
-	G4LogicalVolume *logicDetector;
+	G4LogicalVolume *logicLog;
 	virtual void ConstructSDandField();
+
+private:
+	
+	
 
 	G4int              NbOfLayers;
 	G4int              NbOfColumns;
@@ -40,6 +44,7 @@ private:
 	G4double		ColumnGap;
 	G4double           LogWidth;          
 	G4double           LogLength; 
+
 
 };
 

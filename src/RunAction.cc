@@ -5,7 +5,7 @@ RunAction::RunAction():
 		G4UserRunAction(),
 		_TotalEnergyDeposit(0.)
 {
-    _RunOutputFile.open("./output/data.dat");
+    _RunOutputFile.open("./data.txt");
 }
 
 // Destructor
