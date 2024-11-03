@@ -4,8 +4,9 @@
 MySensitiveDetector::MySensitiveDetector(G4String name) : G4VSensitiveDetector(name)
 {
 	OutputFile.open("./step_output.txt", std::ofstream::out | std::ofstream::trunc);
-    OutputFile << "Energy (eV)\tTime (ns)\tScnitillator\n";
+    OutputFile << "Energy (eV)\tTime (ns)\tScintillator number\n";
     OutputFile.flush();
+
 }
 
 MySensitiveDetector::~MySensitiveDetector()
@@ -13,6 +14,7 @@ MySensitiveDetector::~MySensitiveDetector()
 
 G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhist)
 {	
+    OutputFile.flush();
 	G4Track *track = aStep->GetTrack();
 
     // Stops the photon tracking after it enters the detector
@@ -27,11 +29,11 @@ G4bool MySensitiveDetector::ProcessHits(G4Step *aStep, G4TouchableHistory *ROhis
 
     G4double photonTime = preStepPoint->GetGlobalTime();
 
-    //const G4VTouchable *touchable = aStep->GetPreStepPoint()->GetTouchable();
+    const G4VTouchable *touchable = aStep->GetPreStepPoint()->GetTouchable();
 
-	//G4int copyNo = touchable->GetCopyNumber();
+	G4int copyNo = touchable->GetCopyNumber();
 
-    //OutputFile << photonEnergy/ CLHEP::eV << "\t" << photonTime << "\t" << copyNo << "\n";
+    OutputFile << photonEnergy/ CLHEP::eV << "\t" << photonTime << "\t" << copyNo << "\n";
 
     return true;
 }

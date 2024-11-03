@@ -9,6 +9,8 @@ public:
 	MySensitiveDetector(G4String);
 	~MySensitiveDetector();
 	virtual G4bool ProcessHits(G4Step *, G4TouchableHistory *);
+
+	G4LogicalVolume *logicLog;
 private:
 	
 	std::ofstream OutputFile;

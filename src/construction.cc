@@ -70,7 +70,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	std::vector<G4double> Scnt_FAST = {0.1, 1.0, 0.1, 0.0};
 
 	G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
-	MPT->AddConstProperty("SCINTILLATIONYIELD", 1./MeV); // Rendimiento de CsI(Tl)
+	MPT->AddConstProperty("SCINTILLATIONYIELD", 54000./MeV); // Rendimiento de CsI(Tl)
 	MPT->AddProperty("RINDEX", energy, rindex);
 	MPT->AddProperty("ABSLENGTH", energy, absorption);
 	MPT->AddProperty("SCINTILLATIONCOMPONENT1", energy, Scnt_FAST);
@@ -81,7 +81,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// Define the solid and logical volume
 	G4Box *solidLog = new G4Box("solidLog", LogWidth/2., LogLength/2., LayerThickness/2.);  
-	G4LogicalVolume *logicLog = new G4LogicalVolume(solidLog, CsIMaterial, "logicLog");
+	logicLog = new G4LogicalVolume(solidLog, CsIMaterial, "logicLog");
 
 	G4RotationMatrix* rotateMatrix = new G4RotationMatrix();
 	rotateMatrix -> rotateZ(90.0*deg);
@@ -93,18 +93,18 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
      {													 
      for(int j=0;j<NbOfColumns;++j)																		 
        {
-	Xpos = -((NbOfColumns-1)/2)*(LogWidth+ColumnGap) + j*(LogWidth+ColumnGap);
-	Ypos = 0.;
-	Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + i*(LayerThickness+LayerGap);
+		Xpos = -((NbOfColumns-1)/2)*(LogWidth+ColumnGap) + j*(LogWidth+ColumnGap);
+		Ypos = 0.;
+		Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + i*(LayerThickness+LayerGap);
     G4VPhysicalVolume *physiLog = new G4PVPlacement(0, G4ThreeVector(Xpos, Ypos, Zpos),
-    				     logicLog, "Layer", logicworld, false, 100*i+j);
+    				     logicLog, "Layer", logicworld, false, 10*i+j, true);
      
-	Xpos = 0.;
-	Ypos = -((NbOfColumns-1)/2)*(LogWidth+ColumnGap) + j*(LogWidth+ColumnGap);
-	Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + (i+1)*(LayerThickness+LayerGap);
+		Xpos = 0.;
+		Ypos = -((NbOfColumns-1)/2)*(LogWidth+ColumnGap) + j*(LogWidth+ColumnGap);
+		Zpos = -((NbOfLayers-1)/2)*(LayerThickness+LayerGap) + (i+1)*(LayerThickness+LayerGap);
 
     physiLog = new G4PVPlacement(rotateMatrix, G4ThreeVector(Xpos, Ypos, Zpos),
-    				     logicLog, "Layer", logicworld, false, 100*(i+1)+j);
+    				     logicLog, "Layer", logicworld, false, 1000*(i)+100*j, true);
 
   	G4OpticalSurface* opAirScintillator = new G4OpticalSurface("AirScintillator");
 		opAirScintillator -> SetType(dielectric_metal);
@@ -184,7 +184,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 void MyDetectorConstruction::ConstructSDandField()
 {
-	MySensitiveDetector *sensDet = new MySensitiveDetector("SensitiveDetector");
+	MySensitiveDetector *sensDetector = new MySensitiveDetector("SensitiveDetector");
 
-	//logicLog->SetSensitiveDetector(sensDet);
+	logicLog->SetSensitiveDetector(sensDetector);
 }
