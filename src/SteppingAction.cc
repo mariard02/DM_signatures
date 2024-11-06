@@ -10,7 +10,9 @@
 
 SteppingAction::SteppingAction()
 {
-
+	// Open a file to save the energies of the photons
+	_StepOutputFile1.open("./PMT.txt", std::ofstream::out | std::ofstream::app);
+    
 }
 
 // Create destructor
@@ -19,10 +21,32 @@ SteppingAction::~SteppingAction()
 
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
+	// Define what we do at each step
+	auto track = step->GetTrack();
 
+    //track->SetTrackStatus(fStopAndKill);
+
+    auto particle = track->GetParticleDefinition();
+    auto volume = track->GetVolume();
+    G4StepPoint *preStepPoint = step->GetPreStepPoint();
+    G4StepPoint *postStepPoint = step->GetPostStepPoint();
+
+    _StepOutputFile1.flush();
+
+    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer") {
+
+            G4int trackID = track -> GetTrackID();
+
+            G4double electronEnergy = track->GetKineticEnergy();
+            G4double electronTime = track->GetGlobalTime();
+            
+            _StepOutputFile1 << electronEnergy / eV << "\t" << electronTime / ns << "\t" << eventID << "\t" << trackID << "\n";
+
+            _StepOutputFile1.flush();
+
+            track->SetTrackStatus(fStopAndKill);
+
+    } 
 }
 
-void SteppingAction::SavePhotonData(const G4Step* step, G4String ProcessName){
-
-}
 

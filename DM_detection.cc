@@ -9,9 +9,10 @@
 #include "construction.hh"
 #include "physics.hh"
 #include "action.hh"
-//#include "RunAction.hh"
-//#include "SteppingAction.hh"
 
+#include "RunAction.hh"
+#include "SteppingAction.hh"
+#include "EventAction.hh"
 
 int main(int argc, char** argv){
 
@@ -20,6 +21,15 @@ int main(int argc, char** argv){
 	runManager->SetUserInitialization(new MyDetectorConstruction());
 	runManager->SetUserInitialization(new MyPhysicsList());
 	runManager->SetUserInitialization(new MyactionInitialization());
+
+    RunAction* runAction = new RunAction();
+    runManager->SetUserAction(runAction);
+
+    SteppingAction* steppingAction = new SteppingAction();
+	EventAction* eventAction = new EventAction(steppingAction);
+
+	runManager->SetUserAction(eventAction);
+  	runManager->SetUserAction(steppingAction);
 	//runManager->SetUserAction(new RunAction());
 
 	//RunAction* runAction = new RunAction;
@@ -31,6 +41,14 @@ int main(int argc, char** argv){
   	runManager->Initialize();
 
 	G4UIExecutive *ui = new G4UIExecutive(argc, argv);
+
+	G4UImanager *UImanager = G4UImanager::GetUIpointer();
+
+	UImanager->ApplyCommand("/run/beamOn 3");
+
+	G4cout << "The simulation has finished \n";
+
+	delete runManager;
 
 	//G4VisManager *visManager = new G4VisExecutive();
 	//visManager->Initialize();
@@ -45,7 +63,7 @@ int main(int argc, char** argv){
 	//UImanager->ApplyCommand("/vis/viewer/set/autorefresh true");
 	//UImanager->ApplyCommand("/vis/scene/endOfEventAction accumulate");
 
-	ui->SessionStart();
+	//ui->SessionStart();
 
 	return 0;
 }
