@@ -33,15 +33,19 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     _StepOutputFile1.flush();
 
-    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer") {
+    // Check if the particle is an optical photon and it is in the scintillator
+
+    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer" && 
+         (track->GetDefinition() == G4OpticalPhoton::Definition())
+        ) {
 
             G4int trackID = track -> GetTrackID();
 
-            G4double electronEnergy = track->GetKineticEnergy();
-            G4double electronTime = track->GetGlobalTime();
+            G4double photonEnergy = track->GetKineticEnergy();
+            G4double photonTime = track->GetGlobalTime();
             G4int scintillatorID = preStepPoint->GetTouchableHandle()->GetCopyNumber();
             
-            _StepOutputFile1 << electronEnergy / eV << "\t" << electronTime / ns << "\t" << scintillatorID << "\t" << eventID << "\t" << trackID << "\n";
+            _StepOutputFile1 << photonEnergy / eV << "\t" << photonTime / ns << "\t" << scintillatorID << "\t" << eventID << "\t" << trackID << "\n";
 
             _StepOutputFile1.flush();
 
