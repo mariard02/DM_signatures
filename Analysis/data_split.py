@@ -34,4 +34,15 @@ for event_idx in range(num_events):
 for i, event_energy in enumerate(energy_scintillator):
     print(f"Event {i+1}:")
     for scint, total_energy in event_energy.items():
-        print(f"  Scintillator {scint}: Total Energy = {total_energy:.2f}")
+        print(f"  Scintillator {scint}: Total Energy = {total_energy:.2f} eV")
+
+# Calculate the total energy deposit per event
+energy_event = []
+
+for i in range(num_events):
+	energy_event.append(sum(energy_split[i]))
+
+for i, event_energy in enumerate(energy_event):
+	print(f"Event {i}: energy = {event_energy/10**(6)} MeV")
+
+
