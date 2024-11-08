@@ -40,30 +40,9 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	G4Material *CsIMaterial = new G4Material("CsI", 4.51*g/cm3, 2);
 	CsIMaterial->AddElement(elI, .5);
-	CsIMaterial->AddElement(elCs,.5);
+	CsIMaterial->AddElement(elCs, .5);
 
-	// Add the physical propierties of the scintillating material
-	//std::vector<G4double> energy     = {2.034*eV, 3.*eV, 4.136*eV};
-	//std::vector<G4double> rindex     = {1.78, 1.78, 1.78};
-	//std::vector<G4double> absorption = {100.*cm, 100.*cm, 100.0*cm};
-	
-	//G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
-	
-	// property independent of energy
-	//MPT->AddConstProperty("SCINTILLATIONYIELD", 20000./MeV);
-	
-	// properties that depend on energy
-	//MPT->AddProperty("RINDEX", energy, rindex);
-	//MPT->AddProperty("ABSLENGTH", energy, absorption);
-	
-	
-	//const G4int NUMENTRIES = 13;
-	//G4double Scnt_PP[NUMENTRIES] = { 2.39*eV, 2.43*eV, 2.48*eV, 2.53*eV, 2.58*eV, 2.64*eV, 2.70*eV, 2.76*eV, 2.82*eV, 2.89*eV, 2.95*eV, 3.03*eV, 3.10*eV};
-	//G4double Scnt_FAST[NUMENTRIES] = {0.02, 0.05, 0.10, 0.20, 0.35, 0.50, 0.65, 0.85, 1.00, 0.85, 0.65, 0.35, 0.10};
-	//MPT->AddProperty("SCINTILLATIONCOMPONENT1", Scnt_PP, Scnt_FAST, NUMENTRIES); // We only consider the fast component
-	//MPT->AddConstProperty("RESOLUTIONSCALE", 2.0);
-	//MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 3.3*ns); 
-
+	// Añadir propiedades ópticas y de centelleo de CsI(Tl)
 	std::vector<G4double> energy = {2.034*eV, 2.25*eV, 3.*eV, 4.136*eV}; 
 	std::vector<G4double> rindex = {1.78, 1.78, 1.78, 1.78};
 	std::vector<G4double> absorption = {100.*cm, 100.*cm, 100.*cm, 100.*cm};
@@ -141,8 +120,8 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// Silicon Tracker Configuration
 	G4double trackerThickness = 0.3 * mm; ;     // Thickness of silicon layer
-	G4double tungstenThickness = 0.133 * mm;
-	G4double tungstenThicknessThick = 2 * 0.684 * mm;    // Thickness of tungsten layer
+	G4double tungstenThickness = 0.097 * mm;
+	G4double tungstenThicknessThick =  2 * 0.630 * mm;    // Thickness of tungsten layer
 	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
 	G4double trackerLength = 10*cm;
 
@@ -179,12 +158,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	G4double zPosThick = -((numTrackerLayers - 1) * layerSpacing) / 2 + numTrackerLayers * layerSpacing + trackerZPosition;
 	new G4PVPlacement(0, G4ThreeVector(0, 0, zPosThick), logicTungstenLayerThick, "physTungstenLayerThick", logicworld, false, 0, true);
 
+	G4cout << *( G4Material::GetMaterialTable() ) << G4endl;
+
   return physworld;
-}
-
-void MyDetectorConstruction::ConstructSDandField()
-{
-	//MySensitiveDetector *sensDetector = new MySensitiveDetector("SensitiveDetector");
-
-	//logicLog->SetSensitiveDetector(sensDetector);
 }

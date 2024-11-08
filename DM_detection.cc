@@ -30,6 +30,7 @@ int main(int argc, char** argv){
 
 	runManager->SetUserAction(eventAction);
   	runManager->SetUserAction(steppingAction);
+  	//runManager->SetVerboseLevel(1);
 	//runManager->SetUserAction(new RunAction());
 
 	//RunAction* runAction = new RunAction;
@@ -44,7 +45,9 @@ int main(int argc, char** argv){
 
 	G4UImanager *UImanager = G4UImanager::GetUIpointer();
 
-	UImanager->ApplyCommand("/run/beamOn 3");
+	UImanager->ApplyCommand("/run/printProgress 100");
+
+	UImanager->ApplyCommand("/run/beamOn 1");
 
 	G4cout << "The simulation has finished \n";
 

@@ -5,6 +5,7 @@
 #include "G4SystemOfUnits.hh"
 #include "CLHEP/Units/PhysicalConstants.h" 
 #include <string>
+#include "G4Gamma.hh"
 #include <cmath> // For M_PI
 
 
@@ -52,6 +53,14 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
             track->SetTrackStatus(fStopAndKill);
 
     } 
+
+    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer" && 
+         (track->GetDefinition() == G4Gamma::Definition())
+        ) {
+            G4int scintillatorID = preStepPoint->GetTouchableHandle()->GetCopyNumber();
+            //G4cout << "GAMMA IN SCINTILLATOR "  << scintillatorID << "\n";
+            track->SetTrackStatus(fStopAndKill);
+    }
 }
 
 

@@ -8,6 +8,9 @@ RunAction::RunAction():
     RunOutputFile.open("./PMT.txt");
     RunOutputFile << "Energy (eV) \t Time (ns) \t Scintillator ID \t Event ID \t Particle ID \n";
     RunOutputFile.flush();
+
+    TotalEnergyFile.open("./eventenergy.txt");
+    TotalEnergyFile << "Event \t Gamma ray energy (eV) \n";
 }
 
 // Destructor
@@ -32,4 +35,5 @@ void RunAction::AddTotalEnergyDeposit(G4double energy) {
 void RunAction::EndOfRunAction(const G4Run* run)
 {
 	 RunOutputFile.close();
+     TotalEnergyFile.close();
 }

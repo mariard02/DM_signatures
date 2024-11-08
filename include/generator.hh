@@ -6,6 +6,8 @@
 #include "G4ParticleGun.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4ParticleTable.hh"
+#include <string>
+#include <fstream>
 
 class MyPrimaryGenerator : public G4VUserPrimaryGeneratorAction
 {
@@ -18,6 +20,7 @@ public:
 private:
 	G4ParticleGun *fParticleGun;
 	G4double GenerateEnergyWithPowerLaw(G4double E_min, G4double E_max, G4double alpha);
+	std::ofstream TotalEnergyFile;
 };
 
 #endif

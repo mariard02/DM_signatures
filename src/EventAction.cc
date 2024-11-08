@@ -8,6 +8,8 @@ EventAction::~EventAction() {}
 void EventAction::BeginOfEventAction(const G4Event* event) {
     G4int eventID = event->GetEventID();
     fSteppingAction->SetEventID(eventID); 
+
+    
 }
 
 void EventAction::EndOfEventAction(const G4Event* event) {

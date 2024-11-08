@@ -18,6 +18,7 @@ public:
     
 private:
     std::ofstream RunOutputFile;
+    std::ofstream TotalEnergyFile;
     
     G4double _TotalEnergyDeposit;
 };

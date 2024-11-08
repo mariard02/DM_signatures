@@ -30,7 +30,7 @@ public:
 	virtual G4VPhysicalVolume *Construct();
 
 	G4LogicalVolume *logicLog;
-	virtual void ConstructSDandField();
+	// virtual void ConstructSDandField();
 
 private:
 	
