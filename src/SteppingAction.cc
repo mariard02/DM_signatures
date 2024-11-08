@@ -33,7 +33,7 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     _StepOutputFile1.flush();
 
-    // Check if the particle is an optical photon and it is in the scintillator
+    // Check if the particle is an optical photon AND if it is in the scintillator
 
     if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer" && 
          (track->GetDefinition() == G4OpticalPhoton::Definition())

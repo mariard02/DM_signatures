@@ -1,4 +1,5 @@
 #include "generator.hh"
+#include "Randomize.hh"
 
 MyPrimaryGenerator::MyPrimaryGenerator()
 {
@@ -20,8 +21,22 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 
 	fParticleGun->SetParticlePosition(pos);
 	fParticleGun->SetParticleMomentumDirection(mom);
-	fParticleGun->SetParticleEnergy(10. * MeV);
+
+	G4double E_min = 100. * MeV;
+	G4double E_max = 10000. * MeV;
+
+	// Genera una energía aleatoria con distribución E^-2
+	G4double E_gamma = GenerateEnergyWithPowerLaw(E_min, E_max, -2.0);
+	fParticleGun->SetParticleEnergy(E_gamma);
+
 	fParticleGun->SetParticleDefinition(particle);
 
 	fParticleGun->GeneratePrimaryVertex(anEvent);
+}
+
+G4double MyPrimaryGenerator::GenerateEnergyWithPowerLaw(G4double E_min, G4double E_max, G4double alpha)
+{
+    // Genera una energía con una distribución de ley de potencia E^alpha
+    G4double r = G4UniformRand();
+    return std::pow((std::pow(E_max, alpha + 1) - std::pow(E_min, alpha + 1)) * r + std::pow(E_min, alpha + 1), 1.0 / (alpha + 1));
 }
