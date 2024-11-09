@@ -34,7 +34,7 @@ for event_idx in range(num_events):
 for i, event_energy in enumerate(energy_scintillator):
     print(f"Event {i+1}:")
     for scint, total_energy in event_energy.items():
-        print(f"  Scintillator {scint}: Total Energy = {total_energy:.2f} eV")
+        print(f"  Scintillator {scint}: Total Energy = {total_energy/10**6:.2f} MeV")
 
 # Calculate the total energy deposit per event
 energy_event = []
@@ -44,5 +44,25 @@ for i in range(num_events):
 
 for i, event_energy in enumerate(energy_event):
 	print(f"Event {i}: energy = {event_energy/10**(6)} MeV")
+
+event = 0
+grid_size = 10
+energy_matrix = np.zeros((grid_size, grid_size))
+
+
+for i in list(energy_scintillator[event].keys()):
+    if i < 100:
+        x = int(i) % 10
+        y = int(i) // 10
+        energy_matrix[y, x] = energy_scintillator[event][i]
+
+# Representar la matriz de energía con imshow
+plt.imshow(energy_matrix, cmap='hot', interpolation='nearest')
+plt.colorbar(label="Energía depositada")
+plt.xlabel("Posición x")
+plt.ylabel("Posición y")
+plt.title("Distribución de energía en centelleadores")
+plt.show()
+
 
 
