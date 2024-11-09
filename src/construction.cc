@@ -114,7 +114,8 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// CREATE THE TRACKER
 	G4Material *Si = new G4Material("Silicon", 14., 28.0855*g/mole, 2.33*g/cm3);  // Silicon: z=14, a=28.0855 g/mole, density=2.33 g/cm3
-	G4Material *W = new G4Material("Tungsten", 74., 183.84*g/mole, 19.3*g/cm3);   // Tungsten: z=74, a=183.84 g/mole, density=19.3 g/cm3
+	//G4Material *W = new G4Material("Tungsten", 74., 183.84*g/mole, 19.3*g/cm3);   // Tungsten: z=74, a=183.84 g/mole, density=19.3 g/cm3
+	G4Material *W = nist->FindOrBuildMaterial("G4_W");
 	G4Material* Vacuum = new G4Material("Galactic", 1., 1.008*g/mole, CLHEP::universe_mean_density,
                                     kStateGas, 2.73*kelvin, 3.e-18*pascal);
 
