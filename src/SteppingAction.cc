@@ -63,7 +63,7 @@ void SteppingAction::EndOfEventAction()
         G4int scintillatorID = entry.first;
         G4double totalEnergyDeposited = entry.second;
         
-        _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / eV << "\n";
+        _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / eV   <<  "\t" << eventID << "\n";
     }
 
     // Limpiar el mapa para el próximo evento
