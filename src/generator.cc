@@ -29,7 +29,7 @@ void MyPrimaryGenerator::GeneratePrimaries(G4Event *anEvent)
 
 	// Genera una energía aleatoria con distribución E^-2
 	G4double E_gamma = GenerateEnergyWithPowerLaw(E_min, E_max, -2.0);
-	fParticleGun->SetParticleEnergy(2 * GeV);
+	fParticleGun->SetParticleEnergy(5 * GeV);
 
 	fParticleGun->SetParticleDefinition(particle);
 

@@ -121,8 +121,8 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// Silicon Tracker Configuration
 	G4double trackerThickness = 0.3 * mm; ;     // Thickness of silicon layer
-	G4double tungstenThickness = 0.097 * mm;
-	G4double tungstenThicknessThick =  2 * 0.630 * mm;    // Thickness of tungsten layer
+	G4double tungstenThickness = 0.105 * mm;
+	G4double tungstenThicknessThick =  2.52 / 2 * mm;    // Thickness of tungsten layer
 	G4double trackerWidth = 10*cm;          // Width and length of each tracker layer
 	G4double trackerLength = 10*cm;
 
