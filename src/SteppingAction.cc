@@ -54,13 +54,6 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     } 
 
-    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer" && 
-         (track->GetDefinition() == G4Gamma::Definition())
-        ) {
-            G4int scintillatorID = preStepPoint->GetTouchableHandle()->GetCopyNumber();
-            G4cout << "GAMMA IN SCINTILLATOR "  << scintillatorID << "\n";
-            track->SetTrackStatus(fStopAndKill);
-    }
 }
 
 
