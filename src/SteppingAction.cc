@@ -40,15 +40,14 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
          (track->GetDefinition() == G4OpticalPhoton::Definition())
         ) {
 
-            G4int trackID = track -> GetTrackID();
-
-            G4double photonEnergy = track->GetKineticEnergy();
-            G4double photonTime = track->GetGlobalTime();
             G4int scintillatorID = preStepPoint->GetTouchableHandle()->GetCopyNumber();
-            
-            _StepOutputFile1 << photonEnergy / eV << "\t" << photonTime / ns << "\t" << scintillatorID << "\t" << eventID << "\t" << trackID << "\n";
+            G4double energyDeposited = track -> GetKineticEnergy();
+        
+        // Acumular energía en el centelleador correspondiente
+        if (energyDeposited > 0) {
+            energyDepositedMap[scintillatorID] += energyDeposited;
+        }
 
-            _StepOutputFile1.flush();
 
             track->SetTrackStatus(fStopAndKill);
 
@@ -56,4 +55,20 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
 }
 
+
+void SteppingAction::EndOfEventAction()
+{
+    // Guardar la energía total depositada en cada centelleador en el archivo
+    for (const auto& entry : energyDepositedMap) {
+        G4int scintillatorID = entry.first;
+        G4double totalEnergyDeposited = entry.second;
+        
+        _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / eV << "\n";
+    }
+
+    // Limpiar el mapa para el próximo evento
+    energyDepositedMap.clear();
+    
+    _StepOutputFile1.flush();
+}
 

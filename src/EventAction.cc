@@ -12,6 +12,10 @@ void EventAction::BeginOfEventAction(const G4Event* event) {
     
 }
 
-void EventAction::EndOfEventAction(const G4Event* event) {
-
+void EventAction::EndOfEventAction(const G4Event* /* event */)
+{
+    // Llama a EndOfEventAction de SteppingAction al final de cada evento
+    if (fSteppingAction) {
+        fSteppingAction->EndOfEventAction();
+    }
 }

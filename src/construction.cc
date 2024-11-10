@@ -44,7 +44,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 
 	// Añadir propiedades ópticas y de centelleo de CsI(Tl)
 	std::vector<G4double> energy = {1.77142857, 1.82352941, 1.87878788, 1.9375, 2.0, 2.06666667, 2.13793103, 2.21428571, 2.2962963, 2.38461538, 2.48, 2.58333333, 2.69565217, 2.81818182, 2.95238095, 3.1}; 
-	std::vector<G4double> rindex = {1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78, 1.78};
+	std::vector<G4double> rindex = {1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79};
 	std::vector<G4double> absorption = {100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm};
 	std::vector<G4double> Scnt_FAST = {0.03, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0, 0.7, 0.45, 0.2, 0.05};
 
