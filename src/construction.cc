@@ -20,7 +20,7 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	MPT_air ->AddProperty("RINDEX", energyAir, rindexAir);
 	worldMaterial->SetMaterialPropertiesTable(MPT_air);
 
-  G4Box *solidworld = new G4Box("solidworld", 2.*m, 2.*m, 2.*m);
+    G4Box *solidworld = new G4Box("solidworld", 2.*m, 2.*m, 2.*m);
 	G4LogicalVolume *logicworld = new G4LogicalVolume(solidworld, worldMaterial, "logicWorld");
 	G4VPhysicalVolume *physworld  = new G4PVPlacement(0, G4ThreeVector(0., 0., 0.), logicworld, "physworld", 0, false, 0., true);
 
@@ -43,18 +43,18 @@ G4VPhysicalVolume *MyDetectorConstruction::Construct()
 	CsIMaterial->AddElement(elCs, .5);
 
 	// Añadir propiedades ópticas y de centelleo de CsI(Tl)
-	std::vector<G4double> energy = {1.77142857, 1.82352941, 1.87878788, 1.9375, 2.0, 2.06666667, 2.13793103, 2.21428571, 2.2962963, 2.38461538, 2.48, 2.58333333, 2.69565217, 2.81818182, 2.95238095, 3.1}; 
+	std::vector<G4double> energy = {1.77142857*eV, 1.82352941*eV, 1.87878788*eV, 1.9375*eV, 2.0*eV, 2.06666667*eV, 2.13793103*eV, 2.21428571*eV, 2.2962963*eV, 2.38461538*eV, 2.48*eV, 2.58333333*eV, 2.69565217*eV, 2.81818182*eV, 2.95238095*eV, 3.1*eV}; 
 	std::vector<G4double> rindex = {1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79, 1.79};
 	std::vector<G4double> absorption = {100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm, 100*cm};
-	std::vector<G4double> Scnt_FAST = {0.03, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0, 0.7, 0.45, 0.2, 0.05};
+	//std::vector<G4double> Scnt_FAST = {0.03, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4, 0.5, 0.7, 0.9, 1.0, 0.7, 0.45, 0.2, 0.05};
 
 	G4MaterialPropertiesTable* MPT = new G4MaterialPropertiesTable();
-	MPT->AddConstProperty("SCINTILLATIONYIELD", 54000./MeV); // Rendimiento de CsI(Tl)
+	//MPT->AddConstProperty("SCINTILLATIONYIELD", 0.00001/MeV); // 54000
 	MPT->AddProperty("RINDEX", energy, rindex);
 	MPT->AddProperty("ABSLENGTH", energy, absorption);
-	MPT->AddProperty("SCINTILLATIONCOMPONENT1", energy, Scnt_FAST);
-	MPT->AddConstProperty("RESOLUTIONSCALE", 1.5);
-	MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 1000.*ns); // Decaimiento de CsI(Tl)
+	//MPT->AddProperty("SCINTILLATIONCOMPONENT1", energy, Scnt_FAST);
+	//MPT->AddConstProperty("RESOLUTIONSCALE", 1.5);
+	//MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 1000.*ns); 
 
 	CsIMaterial->SetMaterialPropertiesTable(MPT);
 

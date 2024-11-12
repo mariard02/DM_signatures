@@ -36,20 +36,20 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
 
     // Check if the particle is an optical photon AND if it is in the scintillator
 
-    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer" && 
-         (track->GetDefinition() == G4OpticalPhoton::Definition())
-        ) {
+    if (preStepPoint->GetPhysicalVolume()->GetName() == "Layer")
+         {
 
             G4int scintillatorID = preStepPoint->GetTouchableHandle()->GetCopyNumber();
-            G4double energyDeposited = track -> GetKineticEnergy();
+            //G4double energyDeposited = track -> GetKineticEnergy();
+
+            G4double energy = step->GetTotalEnergyDeposit();
         
         // Acumular energía en el centelleador correspondiente
-        if (energyDeposited > 0) {
-            energyDepositedMap[scintillatorID] += energyDeposited;
+        if (energy > 0) {
+            energyDepositedMap[scintillatorID] += energy;
         }
 
-
-            track->SetTrackStatus(fStopAndKill);
+            //track->SetTrackStatus(fStopAndKill);
 
     } 
 
@@ -64,6 +64,8 @@ void SteppingAction::EndOfEventAction()
         G4double totalEnergyDeposited = entry.second;
         
         _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / eV   <<  "\t" << eventID << "\n";
+
+        _StepOutputFile1.flush();
     }
 
     // Limpiar el mapa para el próximo evento
