@@ -63,7 +63,7 @@ void SteppingAction::EndOfEventAction()
         G4int scintillatorID = entry.first;
         G4double totalEnergyDeposited = entry.second;
         
-        _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / eV   <<  "\t" << eventID << "\n";
+        _StepOutputFile1 << scintillatorID << "\t" << totalEnergyDeposited / CLHEP::MeV   <<  "\t" << eventID << "\n";
 
         _StepOutputFile1.flush();
     }
