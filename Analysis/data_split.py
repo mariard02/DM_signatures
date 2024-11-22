@@ -1,62 +1,79 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 
+# Load data
+# File path to the data file containing scintillator, energy, and event information.
 file = "../build/PMT.txt"
-scintillator, energy, event= np.loadtxt(file, usecols=[0, 1, 2], skiprows=1, unpack=True)
 
-# Separate through events
+# Load columns: scintillator ID, energy, and event ID.
+scintillator, energy, event = np.loadtxt(file, usecols=[0, 1, 2], skiprows=1, unpack=True)
+
+# Separate data by events
+# Determine the total number of events and the number of data points.
 num_events = int(max(event) + 1)
 num_data = len(energy)
 
-energy_split = [ [] for i in range(num_events) ]
-scintillator_split = [ [] for i in range(num_events) ]
+# Initialize lists to separate energy and scintillator data for each event.
+energy_split = [[] for _ in range(num_events)]
+scintillator_split = [[] for _ in range(num_events)]
 
+# Fill the lists by iterating through the data.
 for i in range(num_data):
-	energy_split[int(event[i])].append(energy[i])
-	scintillator_split[int(event[i])].append(scintillator[i])
+    energy_split[int(event[i])].append(energy[i])
+    scintillator_split[int(event[i])].append(scintillator[i])
 
-# Calculate the total energy in each scintillator
+# Calculate the total energy deposited in each scintillator for all events
+# Create a list of dictionaries to store scintillator energy data for each event.
+energy_scintillator = [{} for _ in range(num_events)]
 
-energy_scintillator = [ {} for i in range(num_events)] # We define a dictionary for each event
-
+# Accumulate energy per scintillator for each event.
 for event_idx in range(num_events):
-    # Iterate through the scintillator and energy values in the event
     for scint, en in zip(scintillator_split[event_idx], energy_split[event_idx]):
-        # Sum the energies per scintillator
+        # Add energy to the corresponding scintillator.
         if scint in energy_scintillator[event_idx]:
             energy_scintillator[event_idx][scint] += en
         else:
             energy_scintillator[event_idx][scint] = en
 
-for i, event_energy in enumerate(energy_scintillator):
-    print(f"Event {i+1}:")
-    for scint, total_energy in event_energy.items():
-        print(f"  Scintillator {scint}: Total Energy = {total_energy:.2f} eV")
+# Calculate the total energy deposited in each event
+energy_event = [sum(energy_split[i]) for i in range(num_events)]
 
-# Calculate the total energy deposit per event
-energy_event = []
-
-for i in range(num_events):
-	energy_event.append(sum(energy_split[i]))
-
+# Print total energy deposited per event
 for i, event_energy in enumerate(energy_event):
-	print(f"Event {i + 1}: energy = {event_energy} MeV")
+    print(f"Event {i + 1}: energy = {event_energy} MeV")
 
-event = 0
-energy_matrix = np.zeros((8, 12))
+# Create histogram of total energy deposits across all events
+# Define the number of bins for the histogram and compute the bin centers.
+hist, bin_edges = np.histogram(energy_event, bins=8)
+bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
+# Compute weighted histogram values (bin counts multiplied by bin center squared).
+hist_weighted = hist * bin_centers**2
+
+# Plot histogram with scatter points
+plt.figure()
+plt.scatter(bin_centers, hist_weighted, color='skyblue')
+plt.xlabel("Energy (MeV)")
+plt.ylabel("dN/dE")
+plt.xlim(500, None)  # Set a lower limit for x-axis.
+plt.show()
+
+# Visualize energy deposit for a selected event (e.g., event 11)
+event = 11
+energy_matrix = np.zeros((8, 12))  # Create an 8x12 matrix for visualization.
+
+# Map scintillator IDs to x, y positions and fill the energy matrix.
 for i in list(energy_scintillator[event].keys()):
-    if i < 100:
+    if i < 100:  # Assuming scintillator IDs below 100 are valid.
         x = int(i) % 10
         y = int(i) // 10
         energy_matrix[y, x] = energy_scintillator[event][i]
 
-# Representar la matriz de energía con imshow
-plt.imshow(energy_matrix)
-plt.colorbar(label="Energy deposit (eV)")
+# Plot energy matrix as a heatmap.
+plt.figure()
+plt.imshow(energy_matrix, cmap="viridis")
+plt.colorbar(label="Energy deposit (MeV)")
 plt.xlabel("x")
 plt.ylabel("y")
+plt.title(f"Energy Deposit Heatmap for Event {event}")
 plt.show()
-
-
-
