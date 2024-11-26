@@ -1,7 +1,8 @@
 import numpy as np 
 import matplotlib.pyplot as plt
+from math import factorial
 
-file = "../build/PMT.txt"
+file = "../build/good_data/250_10GeV.txt"
 scintillator, energy, event = np.loadtxt(file, usecols=[0, 1, 2], skiprows=1, unpack=True)
 
 # Separate through events
@@ -56,7 +57,7 @@ hist, bin_edges = np.histogram(energy_event, bins=8)
 bin_centers = (bin_edges[:-1] + bin_edges[1:]) / 2
 
 # Weighted histogram, multiplying the histogram counts by the squared bin centers
-hist_weighted = hist * bin_centers**2
+hist_weighted = hist #* bin_centers**2
 
 # Plot the weighted histogram as a scatter plot
 plt.figure() 
@@ -87,4 +88,14 @@ plt.imshow(energy_matrix)
 plt.colorbar(label="Energy deposit (MeV)")  # Add a color bar to indicate energy values
 plt.xlabel("x")  # Label for the x-axis
 plt.ylabel("y")  # Label for the y-axis
+plt.show()
+
+E_true = 10000 # 10 GeV
+
+E_new = (bin_centers - E_true) / E_true
+
+plt.figure() 
+plt.scatter(E_new, hist_weighted, color='skyblue')
+plt.xlabel("Energy (MeV)")
+plt.ylabel("dN/dE")
 plt.show()
